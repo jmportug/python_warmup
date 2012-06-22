@@ -1,3 +1,16 @@
+
+# General comments:
+# - In general, code looks good! It's cool that you essentially implemented the
+# beginnings of a shell program. Though I think the point of the excercise was
+# to create a command that traverses the actual file system rather than creating
+# it's own tree structure. Maybe the task description was a little unclear.
+# - Some comments would have been nice. Even if things seem obvious when writing
+# them, that may not be the case to someone reading it (or to yourself, when you
+# return to the code after a few months).
+# - Regarding spaces vs. tabs for indentation: When you start writing code for
+# go-storage, set your text editor to expand tabs to four spaces. I prefer tabs
+# as well, fwiw, but it's important to stay consistent within a project.
+
 from tree import *
 
 def find(search_param, ctree):
@@ -15,6 +28,16 @@ def find(search_param, ctree):
 			if(char == '['): num1 += 1
 			elif(char == ']'): num2 += 1
 			
+        # It's great that you check that the input params are sane. But it's
+        # better to raise an exception than to return a string error message.
+        # One reason for this is that it becomes more immediately obvious when
+        # looking at the code that you're handling an error condition. Another
+        # is that if you just return a string the error may go unnoticed
+        # (suppose that the calling function just passes the result along rather
+        # than try to do something with it, for instance).
+        #
+        # (A general principle of error handling is that when something goes 
+        # wrong things should blow up as early as possible.)
 		if(num1 > 1 or num2 > 1): return "To many brackets"
 		temp = search_param.split('[')
 		
@@ -51,6 +74,8 @@ def find_single(search, ctree):
 				files.append(name)
 				
 	if(files==[]):
+        # Here I think you should just return the empty array; a search that
+        # doesn't find anything is not really an error condition.
 		return "Not Found"
 	else:
 		return files

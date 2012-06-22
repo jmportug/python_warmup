@@ -1,3 +1,9 @@
+# It's generally better to be explicit about your imports, e.g:
+# from find import get_dir_list, delete_dir, (etc...)
+#
+# This makes it much easier to see out what's going on in the code, for instance
+# when you call get_dir_list it's easy to figure out that it's a function found in the
+# find module.
 from find import *
 
 ctree = tree()
@@ -62,6 +68,7 @@ while(True):
 	elif(command[0] == "ls"):
 		print(get_dir_list(sub_dir))
 		
+    # I think it would have been better to call these rm and mkdir. standard > non-standard.
 	elif(command[0] == "d"):
 		if(len(command) < 2):
 			print("Give Delete Parameter")
@@ -77,6 +84,5 @@ while(True):
 			
 	elif(command[0] == "q"):
 		break
-	
 	else:
 		print("Command not Recognized")
