@@ -50,10 +50,7 @@ def find_single(search, ctree):
 			elif(search[1] == name[len(search[0])+1:len(search[0])+len(search[1])+1]):
 				files.append(name)
 				
-	if(files==[]):
-		return "Not Found"
-	else:
-		return files
+	return files
 			
 def find_multiple(search, ctree):
 	files = []
@@ -66,10 +63,7 @@ def find_multiple(search, ctree):
 		elif(search[1] == '' or search[1] == name[-len(search[1]):]):
 			files.append(name)
 			
-	if(files==[]):
-		return "Not Found"
-	else:
-		return files
+	return files
 		
 		
 def find_specified(search, ctree):
@@ -81,10 +75,7 @@ def find_specified(search, ctree):
 			if(not(name in files) and name == ndir[-1]):
 				files.append(name)
 				
-	if(files==[]):
-		return "Not Found"
-	else:
-		return files
+	return files
 	
 		
 def find_exact(search, ctree):
@@ -111,7 +102,8 @@ def find_dir(search_param, ctree):
 			if(char == '['): num1 += 1
 			elif(char == ']'): num2 += 1
 			
-		if(num1 > 1 or num2 > 1): return "To many brackets"
+#		if(num1 > 1 or num2 > 1): return "To many brackets"
+		if(num1 > 1 or num2 > 1): raise RuntimeError, "To many brackets"
 		temp = search_param.split('[')
 		
 		if(']' in temp[0]):
@@ -151,10 +143,7 @@ def find_dir_single(search, cnode, dirs):
 		find_dir_single(search, cnode.sub_dirs[i], dirs)
 		i+=1
 		
-	if(dirs==[]):
-		return "Not Found"
-	else:
-		return dirs
+	return dirs
 		
 		
 def find_dir_multiple(search, cnode, dirs):
@@ -173,10 +162,7 @@ def find_dir_multiple(search, cnode, dirs):
 		find_dir_multiple(search, cnode.sub_dirs[i], dirs)
 		i+=1
 		
-	if(dirs==[]):
-		return "Not Found"
-	else:
-		return dirs
+	return dirs
 		
 		
 def find_dir_specified(search, cnode, dirs):
@@ -194,10 +180,7 @@ def find_dir_specified(search, cnode, dirs):
 		find_dir_specified(search, cnode.sub_dirs[i], dirs)
 		i+=1
 		
-	if(dirs==[]):
-		return "Not Found"
-	else:
-		return dirs
+	return dirs
 		
 		
 def find_dir_exact(search, cnode):

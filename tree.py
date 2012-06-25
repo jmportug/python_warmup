@@ -11,7 +11,7 @@ class tree:
 		self.num_leaves=0
 		self.leaves={}
 		
-	def generate(self, cnode, max_depth=8, depth=0, dir_name="/1"):
+	def generate(self, cnode, max_depth=5, depth=0, dir_name="/1"):
 		if(depth < max_depth):
 			i=0
 			while(i<5):

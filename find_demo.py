@@ -1,4 +1,23 @@
-from find import *
+from find import (	find, 
+					find_single, 
+					find_multiple,
+					find_specified, 
+					find_exact,
+ 
+					find_dir, 
+					find_dir_single, 
+					find_dir_multiple, 
+					find_dir_specified, 
+					find_dir_exact,
+ 
+					get_sub_dir, 
+					change_dir, 
+					get_dir_list, 
+					delete_dir, 
+					make_dir,
+
+					tree )
+  
 
 ctree = tree()
 ctree.generate(ctree.root)
@@ -17,7 +36,6 @@ while(True):
 	if(command[0] == "f"):
 		if(len(command) < 2):
 			print("Give Search Parameter")
-			
 		else:
 			print(find(command[1], ctree))
 				
@@ -62,14 +80,14 @@ while(True):
 	elif(command[0] == "ls"):
 		print(get_dir_list(sub_dir))
 		
-	elif(command[0] == "d"):
+	elif(command[0] == "rm"):
 		if(len(command) < 2):
 			print("Give Delete Parameter")
 		else:
 			temp = delete_dir(command[1], sub_dir, ctree)
 			if(temp == None): print("Not Found")
 			
-	elif(command[0] == "m"):
+	elif(command[0] == "mkdir"):
 		if(len(command) < 2):
 			print("Gave Directory Name")
 		else:
