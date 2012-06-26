@@ -15,7 +15,8 @@ def find(search_param, ctree):
 			if(char == '['): num1 += 1
 			elif(char == ']'): num2 += 1
 			
-		if(num1 > 1 or num2 > 1): return "To many brackets"
+#		if(num1 > 1 or num2 > 1): return "To many brackets"
+		if(num1 > 1 or num2 > 1): raise RuntimeError, "To many brackets"
 		temp = search_param.split('[')
 		
 		if(']' in temp[0]):
@@ -258,6 +259,8 @@ def delete_dir(search, cnode, ctree):
 				del ctree.leaves[n]
 				
 			del cnode.sub_dirs[i]
+			if(len(cnode.sub_dirs) == 0):
+				ctree.leaves.update({cnode.value:cnode})
 			return temp
 			
 		i+=1

@@ -20,7 +20,7 @@ from find import (	find,
   
 
 ctree = tree()
-ctree.generate(ctree.root)
+ctree.generate(ctree.root,5)
 print(ctree.size)
 print(ctree.num_leaves)
 
