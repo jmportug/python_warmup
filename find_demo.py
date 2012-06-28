@@ -1,15 +1,6 @@
+# Since find_* and find_dir_* aren't called directly from here they don't need to be imported.
 from find import (	find, 
-					find_single, 
-					find_multiple,
-					find_specified, 
-					find_exact,
- 
 					find_dir, 
-					find_dir_single, 
-					find_dir_multiple, 
-					find_dir_specified, 
-					find_dir_exact,
- 
 					get_sub_dir, 
 					change_dir, 
 					get_dir_list, 
