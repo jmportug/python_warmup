@@ -84,18 +84,17 @@ def find_exact(search, ctree):
 		name = n.split('/')
 		if(search == name[-1]):
 			return ctree.leaves[n].value
-			
-	return "Not Found"
+	
+
 	
 	
-	
-def find_dir(search_param, ctree):
+def find_dir(search_param, cnode):
 	if('?' in search_param):
 		search = search_param.split('?')
-		return find_dir_single(search, ctree, [])
+		return find_dir_single(search, cnode, [])
 	elif('*' in search_param):
 		search = search_param.split('*')
-		return find_dir_multiple(search, ctree, [])
+		return find_dir_multiple(search, cnode, [])
 	elif('[' in search_param and ']' in search_param):
 		num1 = num2 = 0
 		
@@ -122,9 +121,9 @@ def find_dir(search_param, ctree):
 		for char in param:
 			search.append(temp[0]+char+temp[1])
 			
-		return find_dir_specified(search, ctree, [])
+		return find_dir_specified(search, cnode, [])
 	else:
-		return find_dir_exact(search_param, ctree)
+		return find_dir_exact(search_param, cnode)
 		
 
 def find_dir_single(search, cnode, dirs):

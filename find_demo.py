@@ -1,26 +1,17 @@
-from find import (	find, 
-					find_single, 
-					find_multiple,
-					find_specified, 
-					find_exact,
+from find import (	find,
+			find_dir,
  
-					find_dir, 
-					find_dir_single, 
-					find_dir_multiple, 
-					find_dir_specified, 
-					find_dir_exact,
- 
-					get_sub_dir, 
-					change_dir, 
-					get_dir_list, 
-					delete_dir, 
-					make_dir,
+			get_sub_dir, 
+			change_dir, 
+			get_dir_list, 
+			delete_dir, 
+			make_dir,
 
-					tree )
+			tree )
   
 
 ctree = tree()
-ctree.generate(ctree.root)
+ctree.generate(ctree.root, 2, 0, "/1")
 print(ctree.size)
 print(ctree.num_leaves)
 
@@ -92,7 +83,10 @@ while(True):
 			print("Gave Directory Name")
 		else:
 			make_dir(command[1], sub_dir, ctree)
-			
+	
+	elif(command[0] == "p"):
+		ctree.print_tree()
+	
 	elif(command[0] == "q"):
 		break
 	
