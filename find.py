@@ -201,9 +201,9 @@ def find_dir_exact(search, cnode):
 	
 	
 def get_sub_dir(search, cnode):
-	ndir = cnode.value.split('/')[-1]
-	
-	if(ndir == search): return cnode
+#	ndir = cnode.value.split('/')[-1]
+	if(search == cnode.value): return cnode	
+#	if(ndir == search): return cnode
 	
 	num_dirs=len(cnode.sub_dirs)
 	if(num_dirs == 0): return
@@ -267,7 +267,7 @@ def delete_dir(search, cnode, ctree):
 	
 def make_dir(add, cnode, ctree):
 	name = cnode.value+"/"+add
-	nd = node(name)
+	nd = node(name, cnode)
 	
 	if(len(cnode.sub_dirs) == 0):
 	
@@ -284,5 +284,26 @@ def make_dir(add, cnode, ctree):
 				
 	cnode.sub_dirs.append(nd)
 	ctree.leaves.update({nd.value:nd})
-	
-	
+	return nd
+
+
+def add_node(add, cnode, ctree):
+	for n in ctree.leaves:
+		if(n == cnode.value):
+			del ctree.leaves[n]
+			break
+
+	cnode.sub_dirs.append(add)
+	update_leaves(add, ctree)
+
+
+def update_leaves(cnode, ctree):
+	if(len(cnode.sub_dirs) == 0):
+		ctree.leaves.update({cnode.value:cnode})
+	else:
+		for n in cnode.sub_dirs:
+			update_leaves(n, ctree)
+
+
+
+

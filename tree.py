@@ -1,11 +1,11 @@
 class node:
-	def __init__(self, value = ""):
+	def __init__(self, value, par):
 		self.value = value
 		self.sub_dirs = []
-		
+		self.parent = par
 		
 class tree:
-	def __init__(self, root=node("/1")):
+	def __init__(self, root=node("/1", None)):
 		self.root = root
 		self.size = 1
 		self.num_leaves=0
@@ -18,7 +18,7 @@ class tree:
 			while(len(cnode.sub_dirs)<3):
 				self.size+=1
 				name = dir_name+"/"+str(self.size)
-				cnode.sub_dirs.append(node(name))
+				cnode.sub_dirs.append(node(name, cnode))
 				self.generate(cnode.sub_dirs[i],max_depth,depth+1,name)
 				i+=1
 				

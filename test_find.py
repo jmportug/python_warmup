@@ -15,17 +15,17 @@ class TestFind(unittest.TestCase):
         temp = find_exact('8', self.ctree)
         self.assertEqual(temp, "/1/6/8")
 
-    def test_FindSingle(self):
-        temp = find("100?00", self.ctree)
+#    def test_FindSingle(self):
+#        temp = find("100?00", self.ctree)
 #        ipdb.set_trace()
 #	self.assertEqual(temp, [])
 #        pass
-    def test_FindMultiple(self):
-        temp = find("12*1", self.ctree)
+#    def test_FindMultiple(self):
+#        temp = find("12*1", self.ctree)
 #	self.assertEqual(temp, ['1212', '12'])
 #        pass
-    def test_FindSpecified(self):
-        temp = find("12[0123]", self.ctree)
+#    def test_FindSpecified(self):
+#        temp = find("12[0123]", self.ctree)
 #        self.assertEqual(temp, ['120', '121', '123'])
 #        pass
 #    def test_FindDirExact(self):
